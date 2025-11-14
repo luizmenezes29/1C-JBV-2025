@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Economia do Brasil - Atividade de Pensamento Computacional</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <h1>Economia do Brasil 🇧🇷</h1>
+            <p>Atividade de Pensamento Computacional — Desenvolvido por <strong>Luiz G</strong> e <strong>Bruno da Cruz</strong></p>
+            <p>Análise da economia brasileira — potencial, desafios e papel global.</p>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Economia do México</a></li>
+            <li><a href="#situacao">Situação Atual</a></li>
+            <li><a href="#setores">Setores Econômicos</a></li>
+            <li><a href="#politica">Política Monetária</a></li>
+            <li><a href="#graficos">Gráficos</a></li>
+            <li><a href="#desafios">Desafios e Futuro</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="situacao" class="fade">
+            <h2>Situação Atual</h2>
+            <p>
+                O Brasil é a maior economia da América Latina, com destaque nos setores de serviços, indústria e agronegócio. 
+                Apesar dos desafios fiscais, o país mantém estabilidade cambial e vem recuperando gradualmente o crescimento econômico.
+            </p>
+            <p>
+                Em 2025, o PIB brasileiro deve crescer cerca de <strong>2,2%</strong>, impulsionado pelo consumo interno e exportações agrícolas.
+            </p>
+            <img src="https://ichef.bbci.co.uk/ace/ws/640/cpsprodpb/e95d/live/db29c0f0-d575-11ed-afb8-055b4cf6596d.jpg.webp" 
+                 alt="Vista de indústria e agricultura no Brasil">
+        </section>
+
+        <section id="setores" class="fade">
+            <h2>Setores Econômicos</h2>
+            <p>
+                O agronegócio representa cerca de <strong>25%</strong> do PIB brasileiro, com destaque para soja, milho e carne. 
+                O setor de serviços é o mais expressivo, seguido pela indústria automotiva, mineração e energia.
+            </p>
+        </section>
+
+        <section id="politica" class="fade">
+            <h2>Política Monetária e Inflação</h2>
+            <p>
+                O Banco Central do Brasil reduziu gradualmente a taxa Selic para estimular o crédito e o consumo. 
+                A inflação está convergindo para a meta de <strong>3%</strong>, com controle dos preços de alimentos e combustíveis.
+            </p>
+        </section>
+
+        <section id="graficos" class="fade">
+            <h2>Indicadores Econômicos</h2>
+            <p>Veja abaixo a evolução recente do PIB e da inflação brasileira:</p>
+            <canvas id="graficoBrasil" width="400" height="200"></canvas>
+        </section>
+
+        <section id="desafios" class="fade">
+            <h2>Desafios e Futuro</h2>
+            <p>
+                O Brasil enfrenta desafios como a desigualdade social, baixa produtividade e complexidade tributária.
+            </p>
+            <p>
+                Investimentos em inovação, educação e sustentabilidade são essenciais para um crescimento duradouro.
+            </p>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjb9e6AmB-h0YEB6ffJFPuZUSGbl-p4zVHhg&s" 
+                 alt="Inovação e Indústria 4.0 no Brasil">
+        </section>
+    </main>
+
+    <footer>
+        <p><strong>Atividade de Pensamento Computacional</strong></p>
+        <p>Desenvolvido por <strong>Luiz G</strong> e <strong>Bruno da Cruz</strong></p>
+        <p>&copy; 2025 Economia do Brasil | Fontes: IBGE, Banco Central, FMI, OCDE</p>
+    </footer>
+
+    <script>
+        const ctx = document.getElementById('graficoBrasil').getContext('2d');
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['2020', '2021', '2022', '2023', '2024', '2025'],
+                datasets: [
+                    {
+                        label: 'Crescimento do PIB (%)',
+                        data: [-3.9, 4.6, 2.9, 2.5, 2.1, 2.2],
+                        borderColor: '#009739',
+                        borderWidth: 2,
+                        fill: false
+                    },
+                    {
+                        label: 'Inflação (%)',
+                        data: [3.2, 8.7, 5.9, 4.5, 3.9, 3.2],
+                        borderColor: '#ffcc00',
+                        borderWidth: 2,
+                        fill: false
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: false
+                    }
+                }
+            }
+        });
+
+        const fadeElements = document.querySelectorAll('.fade');
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.2 });
+
+        fadeElements.forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
